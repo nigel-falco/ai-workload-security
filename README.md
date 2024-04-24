@@ -23,7 +23,7 @@ eksctl create cluster --name sysdig-cluster --node-type t3.xlarge --nodes 1 --no
 kubectl apply -f https://raw.githubusercontent.com/nigel-falco/ai-workload-security/main/tensorflow.yaml
 ```
 
-Version Pinning: <br/>
+#### Version Pinning:
 If you require a specific vulnerable version of TensorFlow, specify it in your pip install command, like ```pip install tensorflow==2.4.0```.
 
 ```
