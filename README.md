@@ -51,7 +51,7 @@ Shell into the pod if you want to generate some suspicious activity:
 kubectl exec -it $(kubectl get pods -n default -o jsonpath='{.items[0].metadata.name}') -- /bin/bash
 ```
 ```
-curl http://<unauthorized-external-ip>:<unauthorized-port>
+curl 49.12.80.40:80
 ```
 
 Then access it via ```http://localhost:8888``` in your browser.
