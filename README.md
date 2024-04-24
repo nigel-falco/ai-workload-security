@@ -32,7 +32,7 @@ kubectl get pods
 ```
 
 ```
-kubectl logs -f $(kubectl get pods -n default -o jsonpath='{.items[0].metadata.name}')
+kubectl logs -f $(kubectl get pods -n default -o jsonpath='{.items[0].metadata.name}') | grep tensorflow
 ```
 
 ## Verifying the Service
