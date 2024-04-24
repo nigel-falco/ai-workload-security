@@ -43,6 +43,11 @@ You can also use port-forwarding to access the Jupyter Notebook locally:
 kubectl port-forward $(kubectl get pods -n default -o jsonpath='{.items[0].metadata.name}') 8888:8888
 ```
 
+Sehll into the pod if you want to generate some suspicious activity:
+```
+kubectl exec -it $(kubectl get pods -n default -o jsonpath='{.items[0].metadata.name}') -- /bin/bash
+```
+
 Then access it via ```http://localhost:8888``` in your browser.
 
 ## Scaling the cluster
