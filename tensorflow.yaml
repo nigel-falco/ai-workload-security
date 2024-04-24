@@ -19,5 +19,5 @@ spec:
         - containerPort: 8888  # Port 8888 is typically used for Jupyter Notebook access
         command: ["sh", "-c"]
         args: [
-          "pip install jupyter && jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
+          "pip install tensorflow jupyter && jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
         ]
