@@ -63,6 +63,12 @@ Alternatively, run it as a single line command:
 kubectl exec -it $(kubectl get pods -n default -o jsonpath='{.items[0].metadata.name}') -- curl http://39.107.213.229:6666
 ```
 
+```
+kubectl exec -it $(kubectl get pods -n default -o jsonpath='{.items[0].metadata.name}') -- curl http://104.237.10.164:45700
+```
+
+Lists the [C2 IPs and Port](https://eu1.app.sysdig.com/secure/#/policies/rules/falco/Detect%20outbound%20connections%20to%20common%20miner%20pool%20ports?filter=port&details=list-edit&name=miners_ip) addresses associated with the mining pool networks.
+
 ## Scaling the cluster
 
 ```
