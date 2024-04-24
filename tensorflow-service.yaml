@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: tensorflow-service
 spec:
-  type: ClusterIP  # This is the default type, which exposes the service on a cluster-internal IP.
+  type: NodePort
   ports:
-    - port: 8888  # The port that the service will be exposed on inside the cluster.
-      targetPort: 8888  # The port on the pod that the service should route to.
+    - port: 8888
+      targetPort: 8888
+      nodePort: 30088  # Optional: specify a port or leave it out to have Kubernetes assign one
   selector:
-    app: tensorflow  # This should match the labels of the pods you want to expose.
+    app: tensorflow
