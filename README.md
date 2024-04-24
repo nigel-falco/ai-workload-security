@@ -45,3 +45,12 @@ kubectl port-forward <pod-name> 8888:8888
 
 Then access it via ```http://localhost:8888``` in your browser.
 
+## Scaling the cluster
+
+```
+eksctl get nodegroups --cluster sysdig-cluster
+```
+
+```
+eksctl scale nodegroup --cluster falco-cluster --name ng-d93efc25 --nodes 0
+```
