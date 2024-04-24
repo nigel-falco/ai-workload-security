@@ -32,7 +32,7 @@ kubectl get pods
 ```
 
 ```
-kubectl logs <pod-name>
+kubectl logs -f $(kubectl get pods -n default -o jsonpath='{.items[0].metadata.name}')
 ```
 
 ## Verifying the Service
@@ -40,7 +40,7 @@ If the Jupyter Notebook is running correctly, you should see logs indicating tha
 You can also use port-forwarding to access the Jupyter Notebook locally:
 
 ```
-kubectl port-forward <pod-name> 8888:8888
+kubectl port-forward $(kubectl get pods -n default -o jsonpath='{.items[0].metadata.name}') 8888:8888
 ```
 
 Then access it via ```http://localhost:8888``` in your browser.
