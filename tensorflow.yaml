@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tensorflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tensorflow
+  template:
+    metadata:
+      labels:
+        app: tensorflow
+    spec:
+      containers:
+      - name: tensorflow
+        image: tensorflow/tensorflow:latest
+        ports:
+        - containerPort: 8888  # Port 8888 is typically used for Jupyter Notebook access if needed
