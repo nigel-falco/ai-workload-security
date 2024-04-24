@@ -20,15 +20,11 @@ eksctl create cluster --name sysdig-cluster --node-type t3.xlarge --nodes 1 --no
 ## Installing Tensorflow AI Workload
 
 ```
-wget https://raw.githubusercontent.com/nigel-falco/ai-workload-security/main/tensorflow.yaml
+kubectl apply -f https://raw.githubusercontent.com/nigel-falco/ai-workload-security/main/tensorflow.yaml
 ```
 
 Version Pinning: <br/>
 If you require a specific vulnerable version of TensorFlow, specify it in your pip install command, like ```pip install tensorflow==2.4.0```.
-
-```
-kubectl apply -f tensorflow.yaml
-```
 
 ```
 kubectl get pods
@@ -39,7 +35,18 @@ kubectl logs -f $(kubectl get pods -n default -o jsonpath='{.items[0].metadata.n
 ```
 
 ## Verifying the Service
-If the Jupyter Notebook is running correctly, you should see logs indicating that the server has started and is listening on port 8888. <br/>
+If the Jupyter Notebook is running correctly, you should see logs indicating that the server has started and is listening on ```port 8888```:
+```
+kubectl apply -f https://raw.githubusercontent.com/nigel-falco/ai-workload-security/main/tensorflow-service.yaml
+```
+```
+kubectl get service tensorflow-service
+```
+Once the Service is up, you can access your TensorFlow application at:
+```
+http://tensorflow-service.default.svc.cluster.local:8888
+```
+
 You can also use port-forwarding to access the Jupyter Notebook locally:
 
 ```
