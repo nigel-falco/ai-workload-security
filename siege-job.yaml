@@ -1,0 +1,12 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: siege-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: siege
+        image: yokogawa/siege:latest
+        args: ["-c30", "-t10S", "http://yourapplication.default.svc.cluster.local"]
+      restartPolicy: Never
