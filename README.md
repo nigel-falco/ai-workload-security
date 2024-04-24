@@ -52,5 +52,5 @@ eksctl get nodegroups --cluster sysdig-cluster
 ```
 
 ```
-eksctl scale nodegroup --cluster falco-cluster --name ng-d93efc25 --nodes 0
+eksctl scale nodegroup --cluster sysdig-cluster --name ng-d93efc25 --nodes 0
 ```
