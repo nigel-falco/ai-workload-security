@@ -69,6 +69,22 @@ kubectl exec -it $(kubectl get pods -n default -o jsonpath='{.items[0].metadata.
 
 Lists the [C2 IPs and Port](https://eu1.app.sysdig.com/secure/#/policies/rules/falco/Detect%20outbound%20connections%20to%20common%20miner%20pool%20ports?filter=port&details=list-edit&name=miners_ip) addresses associated with the mining pool networks.
 
+### Proper DDoS Workflow
+```
+kubectl apply -f https://raw.githubusercontent.com/nigel-falco/ai-workload-security/main/siege-job.yaml
+```
+
+View the logs of the Siege test:
+```
+kubectl logs -f $(kubectl get pods --selector=job-name=siege-job --output=jsonpath='{.items[0].metadata.name}')
+```
+
+After reviewing the test results, clean up the job to free resources:
+
+```
+kubectl delete job siege-job
+```
+
 ## Scaling the cluster
 
 ```
