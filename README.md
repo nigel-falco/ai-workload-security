@@ -77,7 +77,11 @@ Lists the [C2 IPs and Port](https://eu1.app.sysdig.com/secure/#/policies/rules/f
 
 ### Proper DDoS Workflow
 ```
-kubectl apply -f https://raw.githubusercontent.com/nigel-falco/ai-workload-security/main/siege-job.yaml
+kubectl create ns attacker
+```
+
+```
+kubectl apply -f https://raw.githubusercontent.com/nigel-falco/ai-workload-security/main/siege-job.yaml -n attacker
 ```
 
 View the logs of the Siege test:
