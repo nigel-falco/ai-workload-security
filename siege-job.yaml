@@ -8,5 +8,5 @@ spec:
       containers:
       - name: siege
         image: yokogawa/siege:latest
-        args: ["-c30", "-t10S", "http://yourapplication.default.svc.cluster.local"]
+        args: ["-c30", "-t10S", "http://10.100.59.27:8888"]  # Example IP and port
       restartPolicy: Never
