@@ -16,8 +16,18 @@ spec:
       - name: tensorflow
         image: tensorflow/tensorflow:latest
         ports:
-        - containerPort: 8888  # Port 8888 is typically used for Jupyter Notebook access
+        - containerPort: 8888  # Jupyter Notebook
+        - containerPort: 8080  # HTTP Server for HTML
         command: ["sh", "-c"]
         args: [
-          "pip install tensorflow jupyter && jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
+          "pip install tensorflow jupyter && \
+          echo '<html><body><h1>Hello TensorFlow</h1></body></html>' > /usr/share/html/index.html && \
+          jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root & \
+          python3 -m http.server 8080 --directory /usr/share/html"
         ]
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/share/html
+      volumes:
+      - name: html-volume
+        emptyDir: {}
