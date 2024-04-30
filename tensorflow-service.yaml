@@ -3,10 +3,13 @@ kind: Service
 metadata:
   name: tensorflow-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
-    - port: 8888
-      targetPort: 8888
-      nodePort: 30088  # Optional: specify a port or leave it out to have Kubernetes assign one
+  - port: 8888
+    targetPort: 8888
+    name: jupyter
+  - port: 8080
+    targetPort: 8080
+    name: http
   selector:
     app: tensorflow
