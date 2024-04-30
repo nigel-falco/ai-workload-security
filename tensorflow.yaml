@@ -19,7 +19,7 @@ spec:
         - containerPort: 8080
         command: ["sh", "-c"]
         args: [
-          "echo '<html><body><h1>Hello TensorFlow</h1></body></html>' > /usr/share/html/index.html && \
+          "echo '<!DOCTYPE html><html><head><style>body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; } #content { text-align: center; } input[type=text] { margin-top: 20px; padding: 10px; width: 300px; font-size: 16px; } </style></head><body><div id=\"content\"><h1>SysdigGPT</h1><input type=\"text\" placeholder=\"Ask me anything about AI Security\"></div></body></html>' > /usr/share/html/index.html && \
           cd /usr/share/html && \
           python3 -m http.server 8080"
         ]
