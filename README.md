@@ -46,13 +46,10 @@ Once the Service is up, you can access your TensorFlow application at:
 http://tensorflow-service.default.svc.cluster.local:8888
 ```
 
-You can also use port-forwarding to access the Jupyter Notebook locally:
-
+Check for all reatlime ```GET```/```POST``` requests to the Tensorflow backend via the JS frontend:
 ```
-kubectl port-forward $(kubectl get pods -n default -o jsonpath='{.items[0].metadata.name}') 8888:8888
+kubectl logs -l app=tensorflow --tail=10 --follow
 ```
-
-Then access it via ```http://localhost:8888``` in your browser.
 
 ## DDoS Attack / Data Exfilitration / Data Destruction from AI Workload
 
